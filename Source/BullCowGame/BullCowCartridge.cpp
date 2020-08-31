@@ -4,11 +4,12 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
-    PrintLine("Hello");
-    PrintLine("press enter to begin");
+    PrintLine(TEXT("Hello"));
+    PrintLine(TEXT("press enter to begin"));
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
+    FString HiddenWord = TEXT("cake");
 }
