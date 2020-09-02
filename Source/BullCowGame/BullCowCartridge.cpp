@@ -5,12 +5,12 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
 
+    SetupGame();
+    PrintLine(FString::Printf(TEXT("The hidden word is %i characters long"), HiddenWord.Len()));
     // Welcome the player
     PrintLine(TEXT("Hello"));
     PrintLine(TEXT("Guess the four letter word"));
-    PrintLine(TEXT("press enter to begin"));
-
-    InitGame(); // Setting up the game
+    PrintLine(TEXT("press enter to begin")); 
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -21,14 +21,17 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     {
         PrintLine(TEXT("You win"));
     }
-    else 
+    else
     {
-        PrintLine(TEXT("You lose"));
+        if (Input.Len() != HiddenWord.Len())
+        {
+          PrintLine(FString::Printf(TEXT("The hidden word is %i"), HiddenWord.Len()));  // %i for integer
+        }
     }
 }
 
-void UBullCowCartridge::InitGame()
+void UBullCowCartridge::SetupGame()
 {
-    HiddenWord = TEXT("cake"); // Set the hidden word
-    lives = // Set lives
+    HiddenWord = TEXT("cake"); 
+    lives = 4; 
 }
